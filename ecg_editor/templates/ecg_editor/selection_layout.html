@@ -1,0 +1,135 @@
+{% extends 'ecg_editor/dashboard.html' %}
+{% load static %}
+{% block content %}
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Исходное изображение</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2">
+                <button type="button" class="btn btn-sm btn-outline-secondary">Сохранить</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Отмена</button>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="scroll" style="overflow-y: scroll; ;">
+            <canvas id="paint" width="{{ width }}" height="{{ height }}" style="border: 2px solid #000000;"
+                    onclick="rectangle()">Update your
+                browser to
+                support HTML5 Canvas
+            </canvas>
+            <div style="display:none;">
+                <img id="source" src="{% static 'ecg_editor/img/2.jpg' %}" alt="шо">
+            </div>
+        </div>
+        <buttons>
+            <div class="position-sticky pt-3" data-toggle="buttons">
+                <ul class="nav flex-column">
+                    <div class="btn-group-vertical btn-group-toggle ">
+                        <button type="button" id="option1" class="btn btn-outline-secondary" onclick="print_I()">
+                            <i class="far fa-check-circle"></i> I
+                        </button>
+                        <button type="button" id="option2" class="btn btn-outline-secondary" onclick="print_II()">
+                            <i class="far fa-check-circle"></i> II
+                        </button>
+                        <button type="button" id="option3" class="btn btn-outline-secondary" onclick="print_III()">
+                            <i class="far fa-check-circle"></i> III
+                        </button>
+                        <button type="button" id="option4" class="btn btn-outline-secondary" onclick="print_aVR()">
+                            <i class="far fa-check-circle"></i> aVR
+                        </button>
+                        <button type="button" id="option5" class="btn btn-outline-secondary" onclick="print_aVL()">
+                            <i class="far fa-check-circle"></i> aVL
+                        </button>
+                        <button type="button" id="option6" class="btn btn-outline-secondary" onclick="print_aVF()">
+                            <i class="far fa-check-circle"></i> aVF
+                        </button>
+                        <button type="button" id="option7" class="btn btn-outline-secondary" onclick="print_V1()">
+                            <i class="far fa-check-circle"></i> V1
+                        </button>
+                        <button type="button" id="option8" class="btn btn-outline-secondary" onclick="print_V2()">
+                            <i class="far fa-check-circle"></i> V2
+                        </button>
+                        <button type="button" id="option9" class="btn btn-outline-secondary" onclick="print_V3()">
+                            <i class="far fa-check-circle"></i> V3
+                        </button>
+                        <button type="button" id="option10" class="btn btn-outline-secondary" onclick="print_V4()">
+                            <i class="far fa-check-circle"></i> V4
+                        </button>
+                        <button type="button" id="option11" class="btn btn-outline-secondary" onclick="print_V5()">
+                            <i class="far fa-check-circle"></i> V5
+                        </button>
+                        <button type="button" id="option12" class="btn btn-outline-secondary" onclick="print_V6()">
+                            <i class="far fa-check-circle"></i> V6
+                        </button>
+                    </div>
+                </ul>
+            </div>
+        </buttons>
+    </div>
+    <div id="result" style="display:none;">
+        <form method="post">
+            <input type="number" class="form-control-plaintext" id="I_start_x" value="0">
+            <input type="number" class="form-control-plaintext" id="I_start_y" value="0">
+            <input type="number" class="form-control-plaintext" id="I_end_x" value="0">
+            <input type="number" class="form-control-plaintext" id="I_end_y" value="0">
+
+            <input type="number" class="form-control-plaintext" id="II_start_x" value="0">
+            <input type="number" class="form-control-plaintext" id="II_start_y" value="0">
+            <input type="number" class="form-control-plaintext" id="II_end_x" value="0">
+            <input type="number" class="form-control-plaintext" id="II_end_y" value="0">
+
+            <input type="number" class="form-control-plaintext" id="III_start_x" value="0">
+            <input type="number" class="form-control-plaintext" id="III_start_y" value="0">
+            <input type="number" class="form-control-plaintext" id="III_end_x" value="0">
+            <input type="number" class="form-control-plaintext" id="III_end_y" value="0">
+
+            <input type="number" class="form-control-plaintext" id="avr_start_x" value="0">
+            <input type="number" class="form-control-plaintext" id="avr_start_y" value="0">
+            <input type="number" class="form-control-plaintext" id="avr_end_x" value="0">
+            <input type="number" class="form-control-plaintext" id="avr_end_y" value="0">
+
+            <input type="number" class="form-control-plaintext" id="avl_start_x" value="0">
+            <input type="number" class="form-control-plaintext" id="avl_start_y" value="0">
+            <input type="number" class="form-control-plaintext" id="avl_end_x" value="0">
+            <input type="number" class="form-control-plaintext" id="avl_end_y" value="0">
+
+            <input type="number" class="form-control-plaintext" id="avf_start_x" value="0">
+            <input type="number" class="form-control-plaintext" id="avf_start_y" value="0">
+            <input type="number" class="form-control-plaintext" id="avf_end_x" value="0">
+            <input type="number" class="form-control-plaintext" id="avf_end_y" value="0">
+
+            <input type="number" class="form-control-plaintext" id="V1_start_x" value="0">
+            <input type="number" class="form-control-plaintext" id="V1_start_y" value="0">
+            <input type="number" class="form-control-plaintext" id="V1_end_x" value="0">
+            <input type="number" class="form-control-plaintext" id="V_end_y" value="0">
+
+            <input type="number" class="form-control-plaintext" id="V2_start_x" value="0">
+            <input type="number" class="form-control-plaintext" id="V2_start_y" value="0">
+            <input type="number" class="form-control-plaintext" id="V2_end_x" value="0">
+            <input type="number" class="form-control-plaintext" id="V2_end_y" value="0">
+
+            <input type="number" class="form-control-plaintext" id="V3_start_x" value="0">
+            <input type="number" class="form-control-plaintext" id="V3_start_y" value="0">
+            <input type="number" class="form-control-plaintext" id="V3_end_x" value="0">
+            <input type="number" class="form-control-plaintext" id="V3_end_y" value="0">
+
+            <input type="number" class="form-control-plaintext" id="V4_start_x" value="0">
+            <input type="number" class="form-control-plaintext" id="V4_start_y" value="0">
+            <input type="number" class="form-control-plaintext" id="V4_end_x" value="0">
+            <input type="number" class="form-control-plaintext" id="V4_end_y" value="0">
+
+            <input type="number" class="form-control-plaintext" id="V5_start_x" value="0">
+            <input type="number" class="form-control-plaintext" id="V5_start_y" value="0">
+            <input type="number" class="form-control-plaintext" id="V5_end_x" value="0">
+            <input type="number" class="form-control-plaintext" id="V5_end_y" value="0">
+
+            <input type="number" class="form-control-plaintext" id="V6_start_x" value="0">
+            <input type="number" class="form-control-plaintext" id="V6_start_y" value="0">
+            <input type="number" class="form-control-plaintext" id="V6_end_x" value="0">
+            <input type="number" class="form-control-plaintext" id="V6_end_y" value="0">
+        </form>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="{% static 'ecg_editor/js/paint_rectangle.js' %}"></script>
+{% endblock %}

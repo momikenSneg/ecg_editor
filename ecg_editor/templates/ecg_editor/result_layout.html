@@ -1,0 +1,184 @@
+{% extends 'ecg_editor/dashboard.html' %}
+{% load static %}
+{% block content %}
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Исходное изображение</h1>
+        <button type="button" class="btn btn-sm btn-outline-secondary">Сохранить</button>
+    </div>
+
+    <div class="grid">
+        <div class="card bg-light mb-3" style="max-width: 20rem;">
+            <div class="card-header text-white">
+                I
+                <a href="#zatemnenie">
+                    <i class="far fa-edit text-white"></i>
+                </a>
+            </div>
+            <img class="card-image" src="{% static 'ecg_editor/img/l-1.png' %}">
+        </div>
+        <div class="card bg-light mb-3" style="max-width: 20rem;">
+            <div class="card-header text-white">
+                aVR
+                <i class="far fa-edit text-white"></i>
+            </div>
+            <img class="card-image" src="{% static 'ecg_editor/img/l-4.png' %}">
+        </div>
+        <div class="card bg-light mb-3" style="max-width: 20rem;">
+            <div class="card-header text-white">
+                V1
+                <i class="far fa-edit text-white"></i>
+            </div>
+            <img class="card-image" src="{% static 'ecg_editor/img/l-7.png' %}">
+        </div>
+        <div class="card bg-light mb-3" style="max-width: 20rem;">
+            <div class="card-header text-white">
+                V4
+                <i class="far fa-edit text-white"></i>
+            </div>
+            <img class="card-image" src="{% static 'ecg_editor/img/l-10.png' %}">
+        </div>
+        <div class="card bg-light mb-3" style="max-width: 20rem;">
+            <div class="card-header text-white">
+                II
+                <i class="far fa-edit text-white"></i>
+            </div>
+            <img class="card-image" src="{% static 'ecg_editor/img/l-2.png' %}">
+        </div>
+        <div class="card bg-light mb-3" style="max-width: 20rem;">
+            <div class="card-header text-white">
+                aVL
+                <i class="far fa-edit text-white"></i>
+            </div>
+            <img class="card-image" src="{% static 'ecg_editor/img/l-5.png' %}">
+        </div>
+        <div class="card bg-light mb-3" style="max-width: 20rem;">
+            <div class="card-header text-white">
+                V2
+                <i class="far fa-edit text-white"></i>
+            </div>
+            <img class="card-image" src="{% static 'ecg_editor/img/l-8.png' %}">
+        </div>
+        <div class="card bg-light mb-3" style="max-width: 20rem;">
+            <div class="card-header text-white">
+                V5
+                <i class="far fa-edit text-white"></i>
+            </div>
+            <img class="card-image" src="{% static 'ecg_editor/img/l-11.png' %}">
+        </div>
+        <div class="card bg-light mb-3" style="max-width: 20rem;">
+            <div class="card-header text-white">
+                III
+                <i class="far fa-edit text-white"></i>
+            </div>
+            <img class="card-image" src="{% static 'ecg_editor/img/l-3.png' %}">
+        </div>
+        <div class="card bg-light mb-3" style="max-width: 20rem;">
+            <div class="card-header text-white">
+                aVF
+                <i class="far fa-edit text-white"></i>
+            </div>
+            <img class="card-image" src="{% static 'ecg_editor/img/l-6.png' %}">
+        </div>
+        <div class="card bg-light mb-3" style="max-width: 20rem;">
+            <div class="card-header text-white">
+                V3
+                <i class="far fa-edit text-white"></i>
+            </div>
+            <img class="card-image" src="{% static 'ecg_editor/img/l-9.png' %}">
+        </div>
+        <div class="card bg-light mb-3" style="max-width: 20rem;">
+            <div class="card-header text-white">
+                V6
+                <i class="far fa-edit text-white"></i>
+            </div>
+            <img class="card-image" src="{% static 'ecg_editor/img/l-12.png' %}">
+        </div>
+    </div>
+
+    <div id="zatemnenie">
+        <div id="window" class="card" style="max-width: 50rem;">
+            <div class="card-body">
+                <p class="card-text">Изменение расположения зубцов ЭКГ</p>
+            </div>
+            <img class="image-with-points" src="{% static 'ecg_editor/img/l-2.png' %}" alt="Card image cap">
+            <br>
+            <div class="add-points btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-light active">
+                    <input type="radio" name="options" id="option1" autocomplete="off" checked>
+                    <div class="add-p">
+                        <i class="fas fa-plus"></i><b> P</b>
+                    </div>
+                </label>
+                <label class="btn btn-light">
+                    <input type="radio" name="options" id="option2" autocomplete="off">
+                    <div class="add-q">
+                        <i class="fas fa-plus"></i><b> Q</b>
+                    </div>
+                </label>
+                <label class="btn btn-light">
+                    <input type="radio" name="options" id="option3" autocomplete="off">
+                    <div class="add-r">
+                        <i class="fas fa-plus"></i><b> R</b>
+                    </div>
+                </label>
+                <label class="btn btn-light">
+                    <input type="radio" name="options" id="option3" autocomplete="off">
+                    <div class="add-s">
+                        <i class="fas fa-plus"></i><b> S</b>
+                    </div>
+                </label>
+                <label class="btn btn-light">
+                    <input type="radio" name="options" id="option3" autocomplete="off">
+                    <div class="add-t">
+                        <i class="fas fa-plus"></i><b> T</b>
+                    </div>
+                </label>
+            </div>
+
+            <br>
+            <div class="btn-group me-2">
+                <a href="#" type="button" class="btn btn-sm btn-outline-secondary">Сохранить</a>
+                <a href="#" type="button" class="close-show-window btn btn-sm btn-outline-secondary">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+    <form>
+        <fieldset>
+            <legend>Заключение</legend>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Фамилия</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                       placeholder="Иванов">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Имя</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                       placeholder="Иван">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Отчество</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                       placeholder="Иванович">
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="inputDate">Введите дату:</label>
+                    <input type="date" class="form-control">
+                </div>
+            </form>
+            <div class="form-group">
+                <label for="exampleTextarea">Заключение</label>
+                <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleTextarea">Дополнительная информация</label>
+                <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+            </div>
+
+            <button type="button" class="btn btn-warning">Сохранить</button>
+        </fieldset>
+    </form>
+
+{% endblock %}

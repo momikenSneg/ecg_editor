@@ -1,0 +1,43 @@
+{% extends 'ecg_editor/dashboard.html' %}
+{% load static %}
+{% block content %}
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Настройки параметров</h1>
+    </div>
+
+    <div class="two-column">
+        <div class="card" style="max-width: 20rem;">
+            <div class="card-body">
+                <p class="card-text">Настройка параметров для выделения графика ЭКГ.</p>
+            </div>
+            <img class="card-img" src="{% static 'ecg_editor/img/l-1.png' %}" alt="Card image cap">
+            <fieldset class="form-group">
+                <label class="parameter" for="customRange3" class="form-label">Δ = 150</label>
+                <div class="range">
+                    <input type="range" class="form-range" min="0" max="255" step="1" id="customRange3"/>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <label class="parameter" for="customRange3" class="form-label">t = 150</label>
+                <div class="range">
+                    <input type="range" class="form-range" min="0" max="255" step="1" id="customRange3"/>
+                </div>
+            </fieldset>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Сохранить</button>
+        </div>
+        <div class="card" style="max-width: 20rem;">
+            <div class="card-body">
+                <p class="card-text">Настройка параметров для выделения сетки.</p>
+            </div>
+            <img class="card-img" src="{% static 'ecg_editor/img/l-1.png' %}" alt="Card image cap">
+            <fieldset class="form-group">
+                <label class="parameter" for="customRange3" class="form-label">t = 150</label>
+                <div class="range">
+                    <input type="range" class="form-range" min="0" max="255" step="1" id="customRange3"/>
+                </div>
+            </fieldset>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Сохранить</button>
+        </div>
+    </div>
+
+{% endblock %}

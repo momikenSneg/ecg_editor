@@ -1,0 +1,270 @@
+body {
+    font-size: .875rem;
+}
+
+
+header {
+    background: #42313a;
+    /*position: fixed; */
+}
+
+div img {
+}
+
+div .scroll {
+    height: 500px;
+    /*
+    position: fixed;
+    rtl:raw:
+    right: 0;
+    bottom: 0;
+    top: 0;
+    */
+
+}
+
+.feather {
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+}
+
+/*
+ * Sidebar
+ */
+
+nav ul {
+    display: inline-block;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+nav ul li {
+    color: #eb5959;
+    display: block;
+    margin-top: 0px;
+    margin-left: 20px;
+    transition: transform .4s ease;
+    font-size: 20px;
+}
+
+nav ul li:hover, nav ul a:hover {
+    color: #eb5959;
+    text-decoration: none;
+    transform: scale(1.10);
+}
+
+.add-points{
+    margin-bottom: 10px;
+}
+.add-p{color: red;}
+.add-q{color: green;}
+.add-r{color: blue;}
+.add-s{color: orange;}
+.add-t{color: magenta;}
+
+copyright {
+    position: fixed;
+    bottom: 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.card {
+    margin: 5px;
+}
+
+.card-header {
+    background: #42313a;
+}
+
+#zatemnenie {
+    background: rgba(102, 102, 102, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+#window {
+    display: inline-block;
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    padding: 15px;
+    border: 3px solid #42313a;
+    border-radius: 10px;
+    color: #42313a;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background: #fff;
+}
+
+#zatemnenie:target {
+    display: block;
+}
+
+.close-show-window {
+    /*display: inline-block;
+    border: 1px solid #42313a;
+    color: #42313a;
+    padding: 0 12px;
+    margin: 10px;
+    background: #f2f2f2;
+    font-size: 14pt;
+    cursor: pointer;*/
+}
+
+.close-show-window:hover {
+
+}
+
+/*.edit_button {
+    float: right;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}*/
+
+.two-column {
+    display: grid;
+    grid-template-columns: 25% 25%;
+}
+
+.settings-image {
+    border: 1px solid #e3e3e3;
+}
+
+.card-header .far {
+    float: right;
+}
+
+.card-image {
+    width: 100%;
+    height: 110px;
+}
+
+buttons {
+    float: right;
+    width: 10%;
+    padding-left: 10px;
+    /*position: fixed;
+    top: 0;
+    rtl:raw:
+    right: 0;
+
+    bottom: 0;
+    rtl:remove
+    float: left;
+    z-index: 100; /* Behind the navbar
+    padding: 48px 0 0; /* Height of navbar
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);*/
+}
+
+div .scroll {
+    float: left;
+    width: 90%;
+}
+
+button {
+    float: bottom;
+    margin-bottom: 10px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    /* rtl:raw:
+    right: 0;
+    */
+    bottom: 0;
+    /* rtl:remove */
+    left: 0;
+    z-index: 100; /* Behind the navbar */
+    padding: 48px 0 0; /* Height of navbar */
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+@media (max-width: 767.98px) {
+    .sidebar {
+        top: 5rem;
+    }
+}
+
+.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+.sidebar .nav-link {
+    font-weight: 500;
+    color: #333;
+}
+
+.sidebar .nav-link .feather {
+    margin-right: 4px;
+    color: #727272;
+}
+
+.sidebar .nav-link.active {
+    color: #007bff;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+    color: inherit;
+}
+
+.sidebar-heading {
+    font-size: .75rem;
+    text-transform: uppercase;
+}
+
+/*
+ * Navbar
+ */
+
+.navbar-brand {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    font-size: 1rem;
+    background-color: rgba(0, 0, 0, .25);
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+}
+
+.navbar .navbar-toggler {
+    top: .25rem;
+    right: 1rem;
+}
+
+.navbar .form-control {
+    padding: .75rem 1rem;
+    border-width: 0;
+    border-radius: 0;
+}
+
+.form-control-dark {
+    color: #fff;
+    background-color: rgba(255, 255, 255, .1);
+    border-color: rgba(255, 255, 255, .1);
+}
+
+.form-control-dark:focus {
+    border-color: transparent;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+}
