@@ -3,19 +3,20 @@ import numpy as np
 from matplotlib import pyplot as plt
 import array
 
-path = r'D:\test2.jpg'
+path = r'D:\10.jpg'
+save_path = r'D:\l-10.jpg'
 len_of_point = 5
 
 
-def rotateImage(image):  # Метод разворачивает изображение прямо
+def rotateImage(image):
     return image
 
 
-def translateCoordinates(rot_image, vector_of_points):  # Переводит координаты из пикселей в миллиметры
+def translateCoordinates(rot_image, vector_of_points):
     return vector_of_points
 
 
-def getSignal(image):  # Основной метод который принимает картинку а возвращает оцифрованный сигнал в миллиметрах
+def getSignal(image):
     return image
 
 
@@ -77,15 +78,19 @@ def getPixels(thr_image):
                 else:
                     one_point_signal[i] = [bad_signal[i][0][up - 1][0], i]
 
-    for i in range(0, len(bad_signal)):
-        if len(bad_signal[i]) > 1:
-            print("э")
-
-    for point in one_point_signal:
-        signal_image[point[0], point[1]] = 0
+    # for i in range(0, len(one_point_signal):
+    #     if
+    #
+    for i in range(1, len(one_point_signal)):
+        if one_point_signal[i][0] == 0:
+            continue
+        cur_point = one_point_signal[i]
+        cv2.line(signal_image, (prev_point[1], prev_point[0]), (cur_point[1], cur_point[0]), 0, 1)
+        prev_point = cur_point
         # signal_image[one_point_avg, point[1]] = 0
         # signal_image[one_point_avg + 10, point[1]] = 0
 
+    cv2.imwrite(save_path, signal_image)
     return signal_image
 
 
