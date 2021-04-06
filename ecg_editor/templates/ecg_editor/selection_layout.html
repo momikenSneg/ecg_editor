@@ -5,7 +5,8 @@
         <h1 class="h2">Исходное изображение</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Сохранить</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="save_images()">Сохранить
+                </button>
                 <button type="button" class="btn btn-sm btn-outline-secondary">Отмена</button>
             </div>
         </div>
@@ -13,13 +14,13 @@
 
     <div>
         <div class="scroll" style="overflow-y: scroll; ;">
-            <canvas id="paint" width="{{ width }}" height="{{ height }}" style="border: 2px solid #000000;"
+            <canvas id="paint" width="{{ data.width }}" height="{{ data.height }}" style="border: 2px solid #000000;"
                     onclick="rectangle()">Update your
                 browser to
                 support HTML5 Canvas
             </canvas>
             <div style="display:none;">
-                <img id="source" src="{% static 'ecg_editor/img/2.jpg' %}" alt="шо">
+                <img id="source" src="{#% static 'ecg_editor/img/2.jpg' %#}" alt="шо">
             </div>
         </div>
         <buttons>
@@ -67,69 +68,10 @@
             </div>
         </buttons>
     </div>
-    <div id="result" style="display:none;">
-        <form method="post">
-            <input type="number" class="form-control-plaintext" id="I_start_x" value="0">
-            <input type="number" class="form-control-plaintext" id="I_start_y" value="0">
-            <input type="number" class="form-control-plaintext" id="I_end_x" value="0">
-            <input type="number" class="form-control-plaintext" id="I_end_y" value="0">
-
-            <input type="number" class="form-control-plaintext" id="II_start_x" value="0">
-            <input type="number" class="form-control-plaintext" id="II_start_y" value="0">
-            <input type="number" class="form-control-plaintext" id="II_end_x" value="0">
-            <input type="number" class="form-control-plaintext" id="II_end_y" value="0">
-
-            <input type="number" class="form-control-plaintext" id="III_start_x" value="0">
-            <input type="number" class="form-control-plaintext" id="III_start_y" value="0">
-            <input type="number" class="form-control-plaintext" id="III_end_x" value="0">
-            <input type="number" class="form-control-plaintext" id="III_end_y" value="0">
-
-            <input type="number" class="form-control-plaintext" id="avr_start_x" value="0">
-            <input type="number" class="form-control-plaintext" id="avr_start_y" value="0">
-            <input type="number" class="form-control-plaintext" id="avr_end_x" value="0">
-            <input type="number" class="form-control-plaintext" id="avr_end_y" value="0">
-
-            <input type="number" class="form-control-plaintext" id="avl_start_x" value="0">
-            <input type="number" class="form-control-plaintext" id="avl_start_y" value="0">
-            <input type="number" class="form-control-plaintext" id="avl_end_x" value="0">
-            <input type="number" class="form-control-plaintext" id="avl_end_y" value="0">
-
-            <input type="number" class="form-control-plaintext" id="avf_start_x" value="0">
-            <input type="number" class="form-control-plaintext" id="avf_start_y" value="0">
-            <input type="number" class="form-control-plaintext" id="avf_end_x" value="0">
-            <input type="number" class="form-control-plaintext" id="avf_end_y" value="0">
-
-            <input type="number" class="form-control-plaintext" id="V1_start_x" value="0">
-            <input type="number" class="form-control-plaintext" id="V1_start_y" value="0">
-            <input type="number" class="form-control-plaintext" id="V1_end_x" value="0">
-            <input type="number" class="form-control-plaintext" id="V_end_y" value="0">
-
-            <input type="number" class="form-control-plaintext" id="V2_start_x" value="0">
-            <input type="number" class="form-control-plaintext" id="V2_start_y" value="0">
-            <input type="number" class="form-control-plaintext" id="V2_end_x" value="0">
-            <input type="number" class="form-control-plaintext" id="V2_end_y" value="0">
-
-            <input type="number" class="form-control-plaintext" id="V3_start_x" value="0">
-            <input type="number" class="form-control-plaintext" id="V3_start_y" value="0">
-            <input type="number" class="form-control-plaintext" id="V3_end_x" value="0">
-            <input type="number" class="form-control-plaintext" id="V3_end_y" value="0">
-
-            <input type="number" class="form-control-plaintext" id="V4_start_x" value="0">
-            <input type="number" class="form-control-plaintext" id="V4_start_y" value="0">
-            <input type="number" class="form-control-plaintext" id="V4_end_x" value="0">
-            <input type="number" class="form-control-plaintext" id="V4_end_y" value="0">
-
-            <input type="number" class="form-control-plaintext" id="V5_start_x" value="0">
-            <input type="number" class="form-control-plaintext" id="V5_start_y" value="0">
-            <input type="number" class="form-control-plaintext" id="V5_end_x" value="0">
-            <input type="number" class="form-control-plaintext" id="V5_end_y" value="0">
-
-            <input type="number" class="form-control-plaintext" id="V6_start_x" value="0">
-            <input type="number" class="form-control-plaintext" id="V6_start_y" value="0">
-            <input type="number" class="form-control-plaintext" id="V6_end_x" value="0">
-            <input type="number" class="form-control-plaintext" id="V6_end_y" value="0">
-        </form>
-    </div>
     <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script>
+        let src_img = JSON.parse("{{image_src|escapejs}}");
+        $('#source').attr('src', `data:image/png;base64,${src_img['src']}`);
+    </script>
     <script src="{% static 'ecg_editor/js/paint_rectangle.js' %}"></script>
 {% endblock %}

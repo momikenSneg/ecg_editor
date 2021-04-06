@@ -80,7 +80,18 @@ copyright {
     background: #42313a;
 }
 
-#zatemnenie {
+#blackout-i,
+#blackout-ii,
+#blackout-iii,
+#blackout-avr,
+#blackout-avl,
+#blackout-avf,
+#blackout-v1,
+#blackout-v2,
+#blackout-v3,
+#blackout-v4,
+#blackout-v5,
+#blackout-v6{
     background: rgba(102, 102, 102, 0.5);
     width: 100%;
     height: 100%;
@@ -108,7 +119,18 @@ copyright {
     background: #fff;
 }
 
-#zatemnenie:target {
+#blackout-i:target,
+#blackout-ii:target,
+#blackout-iii:target,
+#blackout-avr:target,
+#blackout-avl:target,
+#blackout-avf:target,
+#blackout-v1:target,
+#blackout-v2:target,
+#blackout-v3:target,
+#blackout-v4:target,
+#blackout-v5:target,
+#blackout-v6:target{
     display: block;
 }
 
@@ -152,7 +174,7 @@ copyright {
 
 .card-image {
     width: 100%;
-    height: 110px;
+    height: 100px;
 }
 
 buttons {

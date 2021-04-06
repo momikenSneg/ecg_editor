@@ -11,14 +11,9 @@
                 <p class="card-text">Настройка параметров для выделения графика ЭКГ.</p>
             </div>
             <img class="card-img" src="{% static 'ecg_editor/img/l-1.png' %}" alt="Card image cap">
+
             <fieldset class="form-group">
-                <label class="parameter" for="customRange3" class="form-label">Δ = 150</label>
-                <div class="range">
-                    <input type="range" class="form-range" min="0" max="255" step="1" id="customRange3"/>
-                </div>
-            </fieldset>
-            <fieldset class="form-group">
-                <label class="parameter" for="customRange3" class="form-label">t = 150</label>
+                <label class="parameter" for="customRange3" class="form-label">t = 175</label>
                 <div class="range">
                     <input type="range" class="form-range" min="0" max="255" step="1" id="customRange3"/>
                 </div>
@@ -29,11 +24,33 @@
             <div class="card-body">
                 <p class="card-text">Настройка параметров для выделения сетки.</p>
             </div>
-            <img class="card-img" src="{% static 'ecg_editor/img/l-1.png' %}" alt="Card image cap">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Разрешение изображения</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                       placeholder="96">
+            </div>
             <fieldset class="form-group">
-                <label class="parameter" for="customRange3" class="form-label">t = 150</label>
-                <div class="range">
-                    <input type="range" class="form-range" min="0" max="255" step="1" id="customRange3"/>
+                <label>Цвет сетки</label>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1"
+                               value="option1" checked="">
+                        красный
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2"
+                               value="option2">
+                        синий
+                    </label>
+                </div>
+                <div class="form-check disabled">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3"
+                               value="option3" >
+                        зеленый
+                    </label>
                 </div>
             </fieldset>
             <button type="button" class="btn btn-sm btn-outline-secondary">Сохранить</button>

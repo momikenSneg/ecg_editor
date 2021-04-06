@@ -7,4 +7,6 @@ urlpatterns = [
     path('result', views.result, name='result'),
     path('settings', views.settings, name='settings'),
     path('tutorial', views.tutorial, name='tutorial'),
+    path('image/cut', views.cut, name='cut'),
+
 ]
